@@ -20,7 +20,7 @@ class Facebook
       feed_json = File.open("#{Rails.root}/spec/fixtures/single_feed.json"){|f| f.read}
     end
     
-    JSON.parse(feed_json)['data'][0]
+    JSON.parse(feed_json)
   end
 
   def self.fetch_feeds(profile_id)
