@@ -45,7 +45,7 @@ class Facebook
   end
   
   def self.actual_fetch(uri)
-    url = "https://graph.facebook.com/#{uri}"
+    url = %Q("https://graph.facebook.com/#{uri}")
     output_file = "#{Rails.root}/tmp/#{rand(Time.now.to_f)}.tmp"
     cmd = "wget #{url} -O #{output_file}"
     puts cmd
