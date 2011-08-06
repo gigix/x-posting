@@ -1,0 +1,5 @@
+<li>
+	<div class='feed_id'><%= link_to feed['id'], url_for(:action => 'by_feed', :fb_id => feed['id']), :method => 'POST' %></div>
+	<div class='feed_message'><%= feed['message'] %></div>
+	<div class='feed_name'><%= feed['name'] %></div>
+</li>

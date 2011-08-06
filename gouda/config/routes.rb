@@ -1,6 +1,8 @@
 Gouda::Application.routes.draw do
   match 'share' => 'share#index'
   match 'share/create' => 'share#create'
+  match 'share/by_user/:fb_id' => 'share#by_user'
+  match 'share/by_feed/:fb_id' => 'share#by_feed'
   
   resources :profiles
   
