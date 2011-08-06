@@ -2,3 +2,8 @@
 	<%= text_field_tag :message %>
 	<%= submit_tag 'Share To My Friends' %>
 <% end %>
+
+<%= form_tag(url_for(:controller => 'share', :action => 'by_user')) do -%>
+	<%= text_field_tag :fb_id %>
+	<%= submit_tag 'Share My Post' %>
+<% end %>
