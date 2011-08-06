@@ -8,7 +8,14 @@ class Facebook
   def self.post(profile_id, options)
     http = http_to_fb
     resp, data = http.post2("#{profile_id}/feed", "access_token=#{access_token}&" + to_query_string(options))
-    puts resp.inspect
+    
+    case resp
+    when Net::HTTPSuccess, Net::HTTPRedirection
+      # OK
+    else
+      resp.error!
+    end
+    
     return resp.body
   end
 
