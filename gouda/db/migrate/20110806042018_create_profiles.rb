@@ -1,7 +1,8 @@
 class CreateProfiles < ActiveRecord::Migration
   def self.up
     create_table :profiles do |t|
-
+      t.string :fb_id
+      
       t.timestamps
     end
   end

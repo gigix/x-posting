@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110806042018) do
 
   create_table "profiles", :force => true do |t|
+    t.string   "fb_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
