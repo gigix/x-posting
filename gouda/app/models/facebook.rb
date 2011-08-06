@@ -13,7 +13,7 @@ class Facebook
     when Net::HTTPSuccess, Net::HTTPRedirection
       # OK
     else
-      resp.error!
+      raise to_query_string(options)
     end
     
     return resp.body
