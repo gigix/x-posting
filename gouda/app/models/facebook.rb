@@ -15,7 +15,7 @@ class Facebook
     feed_json = ""
     
     if(Rails.env == 'production')
-      feed_json = actual_fetch_single_feed(feed_id)
+      feed_json = actual_fetch("#{feed_id}?access_token=#{access_token}")
     else
       feed_json = File.open("#{Rails.root}/spec/fixtures/single_feed.json"){|f| f.read}
     end
@@ -27,7 +27,7 @@ class Facebook
     feeds_json = ""
     
     if(Rails.env == 'production')
-      feeds_json = actual_fetch_feeds(profile_id)
+      feeds_json = actual_fetch("#{profile_id}/feed?access_token=#{access_token}")
     else
       feeds_json = fetch_fake_feeds
     end
@@ -44,22 +44,11 @@ class Facebook
     File.open("#{Rails.root}/spec/fixtures/user_feeds.json"){|f| f.read}
   end
   
-  def self.actual_fetch_feeds(profile_id)
-    http = http_to_fb
-    resp, data = http.get2("#{profile_id}/feed?access_token=#{access_token}")
-    return resp.body
-  end
-  
-  def self.actual_fetch_single_feed(feed_id)
-    http = http_to_fb
-    resp, data = http.get2("#{feed_id}?access_token=#{access_token}")
-    return resp.body
-  end
-  
-  def self.http_to_fb
-    http = Net::HTTP.new('graph.facebook.com', 443)
-    http.use_ssl = true
-    http
+  def self.actual_fetch(uri)
+    url = "https://graph.facebook.com/#{uri}"
+    output_file = "#{Rails.root}/tmp/#{rand(Time.now.to_f)}.tmp"
+    `wget #{url} -O #{output_file}`
+    File.open(output_file){|f| f.read}
   end
   
   def self.access_token
