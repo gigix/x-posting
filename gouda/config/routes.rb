@@ -1,4 +1,6 @@
 Gouda::Application.routes.draw do
+  match 'share' => 'share#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
