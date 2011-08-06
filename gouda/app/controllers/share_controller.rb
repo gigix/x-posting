@@ -18,7 +18,7 @@ class ShareController < ApplicationController
   def by_feed
     feed = Facebook.fetch_single_feed(params[:fb_id])
     
-    post_options = {:message => feed['message'], :picture => feed['picture'], :link => feed['link'], 
+    post_options = {:message => feed['message'], :link => feed['link'], 
       :name => feed['name'], :caption => feed['caption'], :description => feed['description'], 
       :icon => feed['icon']}
     
