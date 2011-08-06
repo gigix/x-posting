@@ -2,6 +2,8 @@ Gouda::Application.routes.draw do
   match 'share' => 'share#index'
   match 'share/create' => 'share#create'
   
+  resources :profiles
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

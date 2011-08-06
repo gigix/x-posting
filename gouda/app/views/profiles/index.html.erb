@@ -1,0 +1,10 @@
+<h1>Profiles to share</h1>
+
+<%= form_tag(profiles_path) do -%>
+	<%= text_field_tag :fb_id %>
+	<%= submit_tag 'Add' %>
+<% end %>
+
+<ul>
+<%= render :partial => 'profile', :collection => @profiles %>
+</ul>
