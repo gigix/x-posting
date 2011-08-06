@@ -51,7 +51,7 @@ class Facebook
   end
   
   def self.to_query_string(hash)
-    hash.map{|k, v| "#{k}=#{v}"}.join("&")
+    hash.map{|k, v| "#{k}=#{ERB::Util.u(v)}"}.join("&")
   end
   
   def self.fetch_fake_feeds
