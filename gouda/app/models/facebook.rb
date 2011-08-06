@@ -49,7 +49,7 @@ class Facebook
     output_file = "#{Rails.root}/tmp/#{rand(Time.now.to_f)}.tmp"
     cmd = "wget #{url} -O #{output_file}"
     puts cmd
-    raise "Fetch failed" unless system(cmd)
+    raise "Fetch failed with <#{cmd}>" unless system(cmd)
     File.open(output_file){|f| f.read}
   end
   
