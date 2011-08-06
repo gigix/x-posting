@@ -47,7 +47,9 @@ class Facebook
   def self.actual_fetch(uri)
     url = "https://graph.facebook.com/#{uri}"
     output_file = "#{Rails.root}/tmp/#{rand(Time.now.to_f)}.tmp"
-    `wget #{url} -O #{output_file}`
+    cmd = "wget #{url} -O #{output_file}"
+    puts cmd
+    raise "Fetch failed" unless system(cmd)
     File.open(output_file){|f| f.read}
   end
   
