@@ -36,6 +36,12 @@ class Facebook
   end
   
   private
+  def self.http_to_fb
+    http = Net::HTTP.new('graph.facebook.com', 443)
+    http.use_ssl = true
+    http
+  end
+  
   def self.to_query_string(hash)
     hash.map{|k, v| "#{k}=#{v}"}.join("&")
   end
